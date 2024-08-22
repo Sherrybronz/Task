@@ -11,5 +11,5 @@ st.title("Password Generator")
 password_length = st.number_input("Enter the desired password length:")
 if st.button("Generate Password"):
     generated_password = generate_password(password_length)
-st.write("Generated Password: ", generated_password)
+    st.write("Generated Password: ", generated_password)
 
