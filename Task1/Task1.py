@@ -8,12 +8,11 @@ def generate_password(length):
     return password
 
 def main():
-    st.title("Password Generator ")
-    password_length = st.number_input("Enter the desired password length: ")
+    st.title("Password Generator")
+    password_length = st.number_input("Enter the desired password length:")
     if st.button("Generate Password"):
         generated_password = generate_password(password_length)
-        st.write(f"**Generated Password:** {generated_password} ")
-
+        st.write("Generated Password: ", generated_password)
 
 if __name__=="__main__":
     main()
