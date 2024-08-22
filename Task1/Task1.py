@@ -3,7 +3,7 @@ import string
 import streamlit as st
 
 def generate_password(length):
-    characters = string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation
+    characters = string.ascii_uppercase + string.ascii_lowercase + string.digits
     password = "".join(random.choice(characters) for i in range(length))
     return password
 
