@@ -1,11 +1,11 @@
 import random
 import streamlit as st
 
-def generate_password(length, has_uppercase, has_lowercase, has_digits, has_punctuation):
+def generate_password(length, has_uppercase, has_lowercase, has_digits, has_specialcharacter):
     upper=['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
     lower=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     digits=['0','1','2','3','4','5','6','7','8','9']
-    punctuation=['!','@','#','$','%','^','&','*','(',')','_']
+    specialcharacter=['!','@','#','$','%','^','&','*','(',')','_','<','>','?']
     characters = ''
     if has_uppercase:
         characters = characters + ''.join(upper)
@@ -13,8 +13,8 @@ def generate_password(length, has_uppercase, has_lowercase, has_digits, has_punc
         characters = characters + ''.join(lower)
     if has_digits:
         characters = characters + ''.join(digits)
-    if has_punctuation:
-        characters = characters +''.join(punctuation)
+    if has_specialcharacter:
+        characters = characters + ''.join(specialcharacter)
     password = "".join(random.choice(characters) for i in range(length))
     return password
 
@@ -25,12 +25,12 @@ def main():
     has_uppercase = st.checkbox("Include Uppercase Letters")
     has_lowercase = st.checkbox("Include Lowercase Letters")
     has_digits = st.checkbox("Include Digits")
-    has_punctuation = st.checkbox("Include Punctuation")
-    if not (has_uppercase or has_lowercase or has_digits or has_punctuation):
+    has_specialcharacter = st.checkbox("Include Special Characters")
+    if not (has_uppercase or has_lowercase or has_digits or has_specialcharacter):
         st.error("Please Select Atleast One Category.")
     else:
         if st.button("Generate Password"):
-            generated_password = generate_password(password_length, has_uppercase, has_lowercase, has_digits, has_punctuation)
+            generated_password = generate_password(password_length, has_uppercase, has_lowercase, has_digits, has_specialcharacter)
             st.write("Generated Password: ", generated_password)
 
 if __name__=="__main__":
